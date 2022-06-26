@@ -1,0 +1,15 @@
+C:\Users\Nikos\source\repos\Holywoodland\MyDatabase\bin\Debug\MyDatabase.dll.config
+C:\Users\Nikos\source\repos\Holywoodland\MyDatabase\bin\Debug\MyDatabase.dll
+C:\Users\Nikos\source\repos\Holywoodland\MyDatabase\bin\Debug\MyDatabase.pdb
+C:\Users\Nikos\source\repos\Holywoodland\MyDatabase\bin\Debug\EntityFramework.dll
+C:\Users\Nikos\source\repos\Holywoodland\MyDatabase\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Nikos\source\repos\Holywoodland\MyDatabase\bin\Debug\EntityFramework.xml
+C:\Users\Nikos\source\repos\Holywoodland\MyDatabase\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Nikos\source\repos\Holywoodland\MyDatabase\obj\Debug\MyDatabase.csproj.AssemblyReference.cache
+C:\Users\Nikos\source\repos\Holywoodland\MyDatabase\obj\Debug\MyDatabase.csproj.CoreCompileInputs.cache
+C:\Users\Nikos\source\repos\Holywoodland\MyDatabase\obj\Debug\MyDatabase.csproj.CopyComplete
+C:\Users\Nikos\source\repos\Holywoodland\MyDatabase\obj\Debug\MyDatabase.dll
+C:\Users\Nikos\source\repos\Holywoodland\MyDatabase\obj\Debug\MyDatabase.pdb
+C:\Users\Nikos\source\repos\Holywoodland\MyDatabase\bin\Debug\Entities.dll
+C:\Users\Nikos\source\repos\Holywoodland\MyDatabase\bin\Debug\Entities.pdb
+C:\Users\Nikos\source\repos\Holywoodland\MyDatabase\bin\Debug\Entities.dll.config

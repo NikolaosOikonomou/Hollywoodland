@@ -1,13 +1,22 @@
 ﻿<!DOCTYPE html>
-
-<html>
+<html lang="en">
 <head>
-    <meta name="viewport" content="width=device-width" />
-    <title>@ViewBag.Title</title>
+    <!--Css Libray and Favicon-->
+    @Html.Partial("~/Areas/Customer/Views/Shared/Components/_MetaHeader.cshtml")
+
 </head>
+
 <body>
-    <div>
-        @RenderBody()
-    </div>
+    <!-- header (hidden style) -->
+    @Html.Partial("~/Areas/Customer/Views/Shared/Components/_Header.cshtml")
+    <!-- end header -->
+    <!-- Body -->
+    @RenderBody()
+    <!-- End Body -->
+    <!-- footer -->
+    @Html.Partial("~/Areas/Customer/Views/Shared/Components/_Footer.cshtml")
+    <!-- end footer -->
+    <!-- JS -->
+    @Html.Partial("~/Areas/Customer/Views/Shared/Components/_JSLibrary.cshtml")
 </body>
 </html>

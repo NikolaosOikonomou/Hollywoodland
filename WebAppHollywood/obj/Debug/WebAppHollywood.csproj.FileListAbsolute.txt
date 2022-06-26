@@ -118,3 +118,6 @@ C:\Users\Nikos\source\repos\Holywoodland\WebAppHollywood\bin\Entities.pdb
 C:\Users\Nikos\source\repos\Holywoodland\WebAppHollywood\bin\Entities.dll.config
 C:\Users\Nikos\source\repos\Holywoodland\WebAppHollywood\bin\ReposotoryServicies.pdb
 C:\Users\Nikos\source\repos\Holywoodland\WebAppHollywood\bin\ReposotoryServicies.dll.config
+C:\Users\Nikos\source\repos\Holywoodland\WebAppHollywood\bin\MyDatabase.dll
+C:\Users\Nikos\source\repos\Holywoodland\WebAppHollywood\bin\MyDatabase.pdb
+C:\Users\Nikos\source\repos\Holywoodland\WebAppHollywood\bin\MyDatabase.dll.config

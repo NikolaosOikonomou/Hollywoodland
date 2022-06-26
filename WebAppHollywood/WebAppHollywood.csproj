@@ -182,8 +182,11 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Customer\Controllers\ActorController.cs" />
+    <Compile Include="Areas\Customer\Controllers\DirectorController.cs" />
     <Compile Include="Areas\Customer\Controllers\MovieController.cs" />
     <Compile Include="Areas\Customer\CustomerAreaRegistration.cs" />
+    <Compile Include="Areas\Customer\ViewModels\MovieIndexViewModel.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -360,6 +363,10 @@
     <Content Include="Areas\Customer\Views\Shared\Components\_Footer.cshtml" />
     <Content Include="Areas\Customer\Views\Shared\Components\_JSLibrary.cshtml" />
     <Content Include="Areas\Customer\Views\Shared\Components\_MetaHeader.cshtml" />
+    <Content Include="Areas\Customer\Views\Director\Details.cshtml" />
+    <Content Include="Areas\Customer\Views\Director\Index.cshtml" />
+    <Content Include="Areas\Customer\Views\Actor\Details.cshtml" />
+    <Content Include="Areas\Customer\Views\Actor\Index.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -430,6 +437,10 @@
     <ProjectReference Include="..\Entities\Entities.csproj">
       <Project>{908d6278-3ac3-4fc6-8a89-f61460f26b88}</Project>
       <Name>Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MyDatabase\MyDatabase.csproj">
+      <Project>{8B7F2987-5897-4A6D-968A-CE5D714C684D}</Project>
+      <Name>MyDatabase</Name>
     </ProjectReference>
     <ProjectReference Include="..\ReposotoryServicies\ReposotoryServicies.csproj">
       <Project>{8c2842f8-37ec-4b46-85fe-17b4e2280c4e}</Project>

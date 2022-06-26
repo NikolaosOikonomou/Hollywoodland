@@ -17,8 +17,8 @@ namespace ReposotoryServicies.Persistance
     /// <typeparam name="T"></typeparam>
     public class GenericRepository<T> : IGenericRepository<T> where T : HollywoodEntity
     {
-        private ApplicationDbContext db;
-        private DbSet<T> table;
+        public ApplicationDbContext db;
+        public DbSet<T> table;
 
         public GenericRepository(ApplicationDbContext context)
         {

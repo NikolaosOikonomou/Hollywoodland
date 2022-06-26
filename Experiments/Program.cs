@@ -15,12 +15,9 @@ namespace Experiments
         static void Main(string[] args)
         {
             ApplicationDbContext db = new ApplicationDbContext();
-            IGenericRepository<Actor> repo = new GenericRepository<Actor>(db);
+            UnitOfWork unit = new UnitOfWork(db); 
 
-            foreach (var item in repo.GetAll())
-            {
-                Console.WriteLine(item.FirstName);
-            } 
+            
         }
     }
 }

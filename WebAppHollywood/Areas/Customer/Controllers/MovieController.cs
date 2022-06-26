@@ -26,7 +26,9 @@ namespace WebAppHollywood.Areas.Customer.Controllers
         {
             MovieIndexViewModel vm = new MovieIndexViewModel()
             {
-                AllMovies = unit.Movies.GetAll()
+                AllMovies = unit.Movies.GetMoviesOrderByAscending(),
+                BestMovies = unit.Movies.GetBestMovies()
+
             };
 
             return View(vm);

@@ -1,4 +1,5 @@
 ﻿using Entities.Models;
+using ReposotoryServicies.Core.Repositories;
 using ReposotoryServicies.Persistance;
 using System;
 using System.Collections.Generic;
@@ -9,8 +10,8 @@ using System.Threading.Tasks;
 namespace ReposotoryServicies.Core
 {
     public interface IUnitOfWork : IDisposable
-    { 
-        IGenericRepository<Movie> Movies { get; }
+    {
+        IMovieRepository Movies { get; }
 
         int Complete();
     }

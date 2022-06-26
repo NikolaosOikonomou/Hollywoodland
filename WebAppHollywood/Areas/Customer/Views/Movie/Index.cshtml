@@ -45,3 +45,5 @@
     <button class="home__nav home__nav--next" data-nav="#flixtv-hero" type="button"></button>
 </div>
 <!-- end home -->
+
+@Html.Action("DisplayMovieCards", new {headerMessage = "Best Movies", movies = Model.BestMovies})

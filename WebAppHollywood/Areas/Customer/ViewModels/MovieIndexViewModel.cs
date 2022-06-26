@@ -9,5 +9,7 @@ namespace WebAppHollywood.Areas.Customer.ViewModels
     public class MovieIndexViewModel
     {
         public IEnumerable<Movie> AllMovies { get; set; }
+
+        public IEnumerable<Movie> BestMovies { get; set; }
     }
 }

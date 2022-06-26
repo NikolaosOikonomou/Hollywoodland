@@ -1,6 +1,7 @@
 ﻿using Entities.Models;
 using MyDatabase;
 using ReposotoryServicies.Core;
+using ReposotoryServicies.Core.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,10 +17,10 @@ namespace ReposotoryServicies.Persistance
         public UnitOfWork(ApplicationDbContext dbContext) 
         {
             context = dbContext;
-            Movies = new GenericRepository<Movie>(context);
+            Movies = new MovieRepository(context);
         }
 
-        public IGenericRepository<Movie> Movies { get; private set; }
+        public IMovieRepository Movies { get; private set; }
        
 
         public int Complete()

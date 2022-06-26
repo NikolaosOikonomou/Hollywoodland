@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Entities.CustomValidations
 {
-    internal class MyValidationMethods
+    public class MyValidationMethods
     {
 
         public static ValidationResult ValidateGreaterOrEqualToZero(double value, ValidationContext context)

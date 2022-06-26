@@ -17,3 +17,6 @@ C:\Users\Nikos\source\repos\Holywoodland\Experiments\bin\Debug\Entities.pdb
 C:\Users\Nikos\source\repos\Holywoodland\Experiments\bin\Debug\Entities.dll.config
 C:\Users\Nikos\source\repos\Holywoodland\Experiments\bin\Debug\ReposotoryServicies.pdb
 C:\Users\Nikos\source\repos\Holywoodland\Experiments\bin\Debug\ReposotoryServicies.dll.config
+C:\Users\Nikos\source\repos\Holywoodland\Experiments\bin\Debug\MyDatabase.dll
+C:\Users\Nikos\source\repos\Holywoodland\Experiments\bin\Debug\MyDatabase.pdb
+C:\Users\Nikos\source\repos\Holywoodland\Experiments\bin\Debug\MyDatabase.dll.config

@@ -9,7 +9,7 @@ using Entities.CustomValidations;
 
 namespace Entities.Models
 {
-    internal class Actor : HollywoodEntity
+    public class Actor : HollywoodEntity
     {
         public int ActorId { get; set; }
         [Required(), MaxLength(60), MinLength(2)]

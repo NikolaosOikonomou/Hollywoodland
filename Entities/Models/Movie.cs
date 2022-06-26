@@ -8,7 +8,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Entities.Models
 {
-    internal class Movie : HollywoodEntity
+    public class Movie : HollywoodEntity
     {
         public int MovieId { get; set; }
         [Required(ErrorMessage = "The Title is Required"), MaxLength(60), MinLength(2)]

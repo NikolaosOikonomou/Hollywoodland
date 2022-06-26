@@ -65,6 +65,10 @@
       <Project>{908d6278-3ac3-4fc6-8a89-f61460f26b88}</Project>
       <Name>Entities</Name>
     </ProjectReference>
+    <ProjectReference Include="..\MyDatabase\MyDatabase.csproj">
+      <Project>{8B7F2987-5897-4A6D-968A-CE5D714C684D}</Project>
+      <Name>MyDatabase</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ReposotoryServicies\ReposotoryServicies.csproj">
       <Project>{8c2842f8-37ec-4b46-85fe-17b4e2280c4e}</Project>
       <Name>ReposotoryServicies</Name>

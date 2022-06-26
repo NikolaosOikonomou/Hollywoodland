@@ -5,17 +5,22 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.Entity;
 using MyDatabase.Initializers;
+using Entities.Models;
 
 namespace MyDatabase
 {
-    internal class ApplcationDbContext : DbContext
+    public class ApplicationDbContext : DbContext
     {
-        public ApplcationDbContext() : base("Sindesmos")
+        public ApplicationDbContext() : base("Sindesmos")
         {
-            Database.SetInitializer<ApplcationDbContext>(new MockupDbInitializer());
-            Database.Initialize(false);
-
-                
+            Database.SetInitializer<ApplicationDbContext>(new MockupDbInitializer());
+            Database.Initialize(false);  
         }
+
+        public DbSet<Actor> Actors { get; set; }
+        public DbSet<Movie> Movies { get; set; }
+        public DbSet<Director> Directors { get; set; }
+        public DbSet<Genre> Genres { get; set; }
+        public DbSet<Photo> Photos { get; set; }
     }
 }

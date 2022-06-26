@@ -8,7 +8,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Entities.Models
 {
-    internal class Director : HollywoodEntity
+    public class Director : HollywoodEntity
     {
         public int DirectorId { get; set; }
         [Required, MaxLength(60), MinLength(2)]

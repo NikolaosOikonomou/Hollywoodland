@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Entities.Models
 {
-    internal enum Country
+    public enum Country
     {
         Afghanistan,
         Albania,

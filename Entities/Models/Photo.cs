@@ -8,7 +8,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Entities.Models
 {
-    internal class Photo : HollywoodEntity
+    public class Photo : HollywoodEntity
     {
         public int PhotoId { get; set; }
         [Display(Name = "Photo URL")]

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Entities.Models
 {
-    internal class Genre : HollywoodEntity
+    public class Genre : HollywoodEntity
     {
         public int GenreId { get; set; }
         public string Kind { get; set; }

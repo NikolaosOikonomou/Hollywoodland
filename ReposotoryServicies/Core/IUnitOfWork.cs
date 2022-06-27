@@ -13,6 +13,8 @@ namespace ReposotoryServicies.Core
     {
         IMovieRepository Movies { get; }
 
+        IActorRepository Actors { get; }
+
         int Complete();
     }
 }

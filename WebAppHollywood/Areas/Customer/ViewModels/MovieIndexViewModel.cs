@@ -11,5 +11,13 @@ namespace WebAppHollywood.Areas.Customer.ViewModels
         public IEnumerable<Movie> AllMovies { get; set; }
 
         public IEnumerable<Movie> BestMovies { get; set; }
+
+        public IEnumerable<Movie> RelatedMovies { get; set; }
+
+        public IEnumerable<Movie> LongestMovies { get; set; }
+
+        public IEnumerable<Movie> OldestMovies { get; set; }
+
+        public IEnumerable<Movie> NewestMovies { get; set; }
     }
 }

@@ -12,5 +12,13 @@ namespace ReposotoryServicies.Core.Repositories
         IEnumerable<Movie> GetMoviesOrderByAscending();
 
         IEnumerable<Movie> GetBestMovies();
+
+        IEnumerable<Movie> GetLongestMovies();
+
+        IEnumerable<Movie> GetOldestMovies();
+
+        IEnumerable<Movie> GetNewestMovies();
+
+        IEnumerable<Movie> GetRelatedMovies(string genre, int count);
     }
 }

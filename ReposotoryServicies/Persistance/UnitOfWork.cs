@@ -2,6 +2,7 @@
 using MyDatabase;
 using ReposotoryServicies.Core;
 using ReposotoryServicies.Core.Repositories;
+using ReposotoryServicies.Persistance.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,9 +19,12 @@ namespace ReposotoryServicies.Persistance
         {
             context = dbContext;
             Movies = new MovieRepository(context);
+            Actors = new ActorRepository(context);
         }
 
         public IMovieRepository Movies { get; private set; }
+
+        public IActorRepository Actors { get; private set; }
        
 
         public int Complete()

@@ -4,6 +4,7 @@ using ReposotoryServicies.Persistance;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using WebAppHollywood.Areas.Customer.ViewModels;
@@ -27,25 +28,37 @@ namespace WebAppHollywood.Areas.Customer.Controllers
             MovieIndexViewModel vm = new MovieIndexViewModel()
             {
                 AllMovies = unit.Movies.GetMoviesOrderByAscending(),
-                BestMovies = unit.Movies.GetBestMovies()
-
+                BestMovies = unit.Movies.GetBestMovies(),
+                LongestMovies = unit.Movies.GetLongestMovies(),
+                NewestMovies = unit.Movies.GetNewestMovies(),
+                OldestMovies = unit.Movies.GetOldestMovies()
             };
 
             return View(vm);
         }
 
-        public ActionResult Details()
+        public ActionResult Details(int? id)
         {
-            return View();
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var movie = unit.Movies.GetById(id);
+            if (movie == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.NotFound);
+            }
+            ViewBag.RelatedMovies = unit.Movies.GetRelatedMovies(movie.Genre.Kind, 5);
+            return View(movie);
         }
 
         [ChildActionOnly]
-        public ActionResult DisplayMovieCards(List<Movie> movies, string headerMessage)
+        public ActionResult DisplayMovieCards(List<Movie> movies, string headerTitle)
         {
             DisplayMovieCardsViewModel vm = new DisplayMovieCardsViewModel()
             {
                 Movies = movies,
-                HeaderTitle = headerMessage
+                HeaderTitle = headerTitle
             };
             return View(vm);
         }

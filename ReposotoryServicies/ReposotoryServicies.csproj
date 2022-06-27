@@ -53,8 +53,10 @@
   <ItemGroup>
     <Compile Include="Core\IGenericRepository.cs" />
     <Compile Include="Core\IUnitOfWork.cs" />
+    <Compile Include="Core\Repositories\IActorRepository.cs" />
     <Compile Include="Core\Repositories\IMovieRepository.cs" />
     <Compile Include="Persistance\GenericRepository.cs" />
+    <Compile Include="Persistance\Repositories\ActorRepository.cs" />
     <Compile Include="Persistance\Repositories\MovieRepository.cs" />
     <Compile Include="Persistance\UnitOfWork.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

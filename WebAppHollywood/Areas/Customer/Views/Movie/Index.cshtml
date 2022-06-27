@@ -46,4 +46,7 @@
 </div>
 <!-- end home -->
 
-@Html.Action("DisplayMovieCards", new {headerMessage = "Best Movies", movies = Model.BestMovies})
+@Html.Action("DisplayMovieCards", new { headerTitle = "Best Movies", movies = Model.BestMovies })
+@Html.Action("DisplayMovieCards", new { headerTitle = "Longest Movies", movies = Model.LongestMovies })
+@Html.Action("DisplayMovieCards", new { headerTitle = "Newest Movies", movies = Model.NewestMovies })
+@Html.Action("DisplayMovieCards", new { headerTitle = "Oldest Movies", movies = Model.OldestMovies })

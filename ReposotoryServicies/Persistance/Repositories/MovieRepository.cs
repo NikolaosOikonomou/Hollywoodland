@@ -26,12 +26,12 @@ namespace ReposotoryServicies.Persistance
 
         public IEnumerable<Movie> GetBestMovies()
         {
-            return table.OrderBy(x => x.Rating).Take(10).ToList();
+            return table.OrderByDescending(x => x.Rating).Take(10).ToList();
         }
 
         public IEnumerable<Movie> GetLongestMovies()
         {
-            return table.OrderBy(x=>x.Duration).Take(10).ToList();
+            return table.OrderByDescending(x=>x.Duration).Take(10).ToList();
         }
 
         public IEnumerable<Movie> GetOldestMovies()
@@ -46,7 +46,7 @@ namespace ReposotoryServicies.Persistance
 
         public IEnumerable<Movie> GetRelatedMovies(string genre, int count)
         {
-            return table.OrderBy(x=>x.Genre.Kind == genre).Take(count).ToList();
+            return table.Where(x=>x.Genre.Kind == genre).Take(count).ToList();
         }
     }
 }

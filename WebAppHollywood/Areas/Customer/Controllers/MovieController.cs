@@ -22,7 +22,7 @@ namespace WebAppHollywood.Areas.Customer.Controllers
             unit = new UnitOfWork(db);
         }
 
-        // GET: Customer/Movie
+        
         public ActionResult Index()
         {
             MovieIndexViewModel vm = new MovieIndexViewModel()
@@ -48,8 +48,14 @@ namespace WebAppHollywood.Areas.Customer.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.NotFound);
             }
-            ViewBag.RelatedMovies = unit.Movies.GetRelatedMovies(movie.Genre.Kind, 5);
-            return View(movie);
+            MovieDetailsViewModel vm = new MovieDetailsViewModel()
+            {
+               
+                MovieDetails = movie,
+                RelatedMovies = unit.Movies.GetRelatedMovies(movie.Genre.Kind, 5)
+            };
+
+            return View(vm);
         }
 
         [ChildActionOnly]

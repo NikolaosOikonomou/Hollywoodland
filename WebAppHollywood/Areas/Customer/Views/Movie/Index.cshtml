@@ -8,12 +8,12 @@
 
 
 
-<!-- home -->
+
 <div class="home home--title">
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <h1 class="home__title"><b>Best Movies</b> of this season</h1>
+                <h1 class="home__title"><b>All Movies</b> </h1>
             </div>
         </div>
     </div>
@@ -44,9 +44,11 @@
     <button class="home__nav home__nav--prev" data-nav="#flixtv-hero" type="button"></button>
     <button class="home__nav home__nav--next" data-nav="#flixtv-hero" type="button"></button>
 </div>
-<!-- end home -->
 
-@Html.Action("DisplayMovieCards", new { headerTitle = "Best Movies", movies = Model.BestMovies })
-@Html.Action("DisplayMovieCards", new { headerTitle = "Longest Movies", movies = Model.LongestMovies })
-@Html.Action("DisplayMovieCards", new { headerTitle = "Newest Movies", movies = Model.NewestMovies })
-@Html.Action("DisplayMovieCards", new { headerTitle = "Oldest Movies", movies = Model.OldestMovies })
+
+
+
+    @Html.Action("DisplayMovieCards", new { headerTitle = "Best Movies", movies = Model.BestMovies })
+    @Html.Action("DisplayMovieCards", new { headerTitle = "Longest Movies", movies = Model.LongestMovies })
+    @Html.Action("DisplayMovieCards", new { headerTitle = "Newest Movies", movies = Model.NewestMovies })
+    @Html.Action("DisplayMovieCards", new { headerTitle = "Oldest Movies", movies = Model.OldestMovies })

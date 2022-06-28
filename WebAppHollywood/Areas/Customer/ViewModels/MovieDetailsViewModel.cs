@@ -6,10 +6,10 @@ using System.Web;
 
 namespace WebAppHollywood.Areas.Customer.ViewModels
 {
-    public class DisplayMovieCardsViewModel
+    public class MovieDetailsViewModel
     {
-        public IEnumerable<Movie> Movies { get; set; }
+        public Movie MovieDetails { get; set; }
 
-        public string HeaderTitle { get; set; }
+        public IEnumerable<Movie> RelatedMovies { get; set; }
     }
 }

@@ -8,7 +8,7 @@ namespace WebAppHollywood.Areas.Customer.ViewModels
 {
     public class MovieDetailsViewModel
     {
-        public Movie MovieDetails { get; set; }
+        public Movie Movie { get; set; }
 
         public IEnumerable<Movie> RelatedMovies { get; set; }
     }

@@ -16,12 +16,12 @@ namespace ReposotoryServicies.Persistance.Repositories
 
         }
 
-        public IEnumerable<Actor> GetMoviesOrderByAscending()
+        public IEnumerable<Actor> GetActorsOrderByAscending()
         {
             return table.OrderBy(x => x.LastName).ToList();
         }
 
-        public IEnumerable<Actor> GetNewestActors()
+        public IEnumerable<Actor> GetYoungestActors()
         {
             return table.OrderByDescending(x => x.DateOfBirth.Year).ToList();
         }
@@ -29,6 +29,22 @@ namespace ReposotoryServicies.Persistance.Repositories
         public IEnumerable<Actor> GetOldestActors()
         {
             return table.OrderBy(x => x.DateOfBirth.Year).ToList();
+        }
+
+        public IEnumerable<Movie> GetActorMovies(int? id)
+        {
+            var movies = table.Find(id).Movies.ToList().Take(5);
+            return movies;
+        }
+
+        public IQueryable<IGrouping<Country, Actor>> GetActorsByCountry()
+        {
+            var group = from actor in table
+                        where actor.Country == country
+                        group actor by actor.Country into lista
+                        select lista;
+
+            return group;
         }
     }
 }

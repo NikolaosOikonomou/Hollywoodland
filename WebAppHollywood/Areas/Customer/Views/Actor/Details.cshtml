@@ -1,8 +1,93 @@
-﻿
+﻿@model WebAppHollywood.Areas.Customer.ViewModels.ActorDetailsViewModel
+
 @{
     ViewBag.Title = "Details";
     Layout = "~/Areas/Customer/Views/Shared/_CustomerLayout.cshtml";
 }
 
-<h2>Details actor from customer</h2>
+<h2>Details</h2>
+
+<!-- head -->
+<body>
+    <section class="section section--head section--head-fixed">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-xl-6">
+                    <h1 class="section__title section__title--head">Actor's Details</h1>
+                </div>
+
+
+            </div>
+        </div>
+    </section>
+    <!-- end head -->
+    <!-- catalog -->
+    <div class="catalog catalog--page catalog--list">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+
+
+                    <div class="row row--grid">
+
+                        <div class="col-12 col-md-6 col-xl-4">
+                            <div class="card card--big">
+                                <a href="~/Customer/Actor/details/@Model.Actor.ActorId" class="card__cover">
+                                    <img src="@Model.Actor.PhotoUrl" alt="">
+                                </a>
+
+                                <div class="card__content">
+                                    <h3 class="card__title"><a href="details.html">@Model.Actor.FirstName @Model.Actor.LastName</a></h3>
+                                    <ul class="card__list">
+                                        <li><b>Date of Birth :</b></li>
+                                        <li>@Model.Actor.DateOfBirth.Day / @Model.Actor.DateOfBirth.Month / @Model.Actor.DateOfBirth.Year </li>
+
+                                    </ul>
+                                    @if (Model.Actor.DateOfDeath != null)
+                                    {
+                                        <ul class="card__list">
+                                            <li><b>Date of Death :</b></li>
+                                            <li>@Model.Actor.DateOfDeath.ToString().AsDateTime().Day / @Model.Actor.DateOfDeath.ToString().AsDateTime().Month / @Model.Actor.DateOfDeath.ToString().AsDateTime().Year</li>
+                                        </ul>
+                                    }
+
+                                    <ul class="card__list">
+                                        <li><b>Country :</b></li>
+                                        <li> @Model.Actor.Country</li>
+                                    </ul>
+                                    <ul class="card__list">
+                                        <li><b>Salary :</b></li>
+                                        <li> @Model.Actor.Salary.ToString("C0")</li>
+                                    </ul>
+                                    <ul class="card__list">
+                                        <li><b>Email :</b></li>
+                                        <li> @Model.Actor.Email</li>
+                                    </ul>
+                                    <ul class="card__list">
+                                        <li><b>Phone Number :</b></li>
+                                        <li> @Model.Actor.Telephone</li>
+                                    </ul>
+                                    <ul class="card__list">
+                                        <li><b>Played in :</b></li>
+
+                                    </ul>
+
+                                    @foreach (var movie in Model.ActorMovies)
+                                    {
+                                        <a href="~/Customer/Movie/Details/@movie.MovieId" style="color:aliceblue" >->@movie.Title</a>
+                                    }
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @*@Html.Action("DisplayActorMovieCards", new { headerTitle = "Actor's Movies", movies = Model.ActorMovies })*@
+
+</body>
 

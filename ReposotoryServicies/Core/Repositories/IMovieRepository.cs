@@ -19,6 +19,6 @@ namespace ReposotoryServicies.Core.Repositories
 
         IEnumerable<Movie> GetNewestMovies();
 
-        IEnumerable<Movie> GetRelatedMovies(string genre, int count);
+        IEnumerable<Movie> GetRelatedMovies(int? id, int count);
     }
 }

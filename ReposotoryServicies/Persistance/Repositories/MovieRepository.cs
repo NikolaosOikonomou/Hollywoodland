@@ -44,9 +44,10 @@ namespace ReposotoryServicies.Persistance
             return table.OrderByDescending(x => x.ProductionYear.Year).Take(10).ToList();
         }
 
-        public IEnumerable<Movie> GetRelatedMovies(string genre, int count)
+        public IEnumerable<Movie> GetRelatedMovies(int? id, int count)
         {
-            return table.Where(x=>x.Genre.Kind == genre).Take(count).ToList();
+            var movie = table.Find(id);
+            return table.Where(x => x.Genre.Kind == movie.Genre.Kind && x.MovieId != movie.MovieId).ToList();
         }
     }
 }

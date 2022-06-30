@@ -9,10 +9,14 @@ namespace ReposotoryServicies.Core.Repositories
 {
     public interface IActorRepository : IGenericRepository<Actor>
     {
-        IEnumerable<Actor> GetMoviesOrderByAscending();
+        IEnumerable<Actor> GetActorsOrderByAscending();
+
+        IEnumerable<Movie> GetActorMovies(int? id);
 
         IEnumerable<Actor> GetOldestActors();
 
-        IEnumerable<Actor> GetNewestActors();
+        IEnumerable<Actor> GetYoungestActors();
+
+        IQueryable<IGrouping<Country, Actor>> GetActorsByCountry();
     }
 }

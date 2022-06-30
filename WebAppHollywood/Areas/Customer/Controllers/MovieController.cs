@@ -39,6 +39,7 @@ namespace WebAppHollywood.Areas.Customer.Controllers
 
         public ActionResult Details(int? id)
         {
+          
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -51,8 +52,8 @@ namespace WebAppHollywood.Areas.Customer.Controllers
             MovieDetailsViewModel vm = new MovieDetailsViewModel()
             {
                
-                MovieDetails = movie,
-                RelatedMovies = unit.Movies.GetRelatedMovies(movie.Genre.Kind, 5)
+                Movie = movie,
+                RelatedMovies = unit.Movies.GetRelatedMovies(id, 5)
             };
 
             return View(vm);

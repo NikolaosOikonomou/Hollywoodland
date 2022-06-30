@@ -186,9 +186,12 @@
     <Compile Include="Areas\Customer\Controllers\DirectorController.cs" />
     <Compile Include="Areas\Customer\Controllers\MovieController.cs" />
     <Compile Include="Areas\Customer\CustomerAreaRegistration.cs" />
+    <Compile Include="Areas\Customer\ViewModels\ActorViews\ActorDetailsViewModel.cs" />
+    <Compile Include="Areas\Customer\ViewModels\ActorViews\ActorIndexViewModel.cs" />
+    <Compile Include="Areas\Customer\ViewModels\ActorViews\DisplayActorCardsViewModel.cs" />
     <Compile Include="Areas\Customer\ViewModels\DisplayMovieCardsViewModel.cs" />
-    <Compile Include="Areas\Customer\ViewModels\MovieDetailsViewModel.cs" />
-    <Compile Include="Areas\Customer\ViewModels\MovieIndexViewModel.cs" />
+    <Compile Include="Areas\Customer\ViewModels\MovieViews\MovieDetailsViewModel.cs" />
+    <Compile Include="Areas\Customer\ViewModels\MovieViews\MovieIndexViewModel.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -367,9 +370,10 @@
     <Content Include="Areas\Customer\Views\Shared\Components\_MetaHeader.cshtml" />
     <Content Include="Areas\Customer\Views\Director\Details.cshtml" />
     <Content Include="Areas\Customer\Views\Director\Index.cshtml" />
-    <Content Include="Areas\Customer\Views\Actor\Details.cshtml" />
-    <Content Include="Areas\Customer\Views\Actor\Index.cshtml" />
     <Content Include="Areas\Customer\Views\Movie\DisplayMovieCards.cshtml" />
+    <Content Include="Areas\Customer\Views\Actor\Index.cshtml" />
+    <Content Include="Areas\Customer\Views\Actor\Details.cshtml" />
+    <Content Include="Areas\Customer\Views\Actor\DisplayActorMovieCards.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

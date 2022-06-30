@@ -23,6 +23,7 @@ namespace Entities.Models
         public string PhotoUrl { get; set; }
         [Required]
         [Display(Name = "Date of Birth")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
         public DateTime DateOfBirth { get; set; }
         [Display(Name = "Date of Death")]
         public DateTime? DateOfDeath { get; set; }

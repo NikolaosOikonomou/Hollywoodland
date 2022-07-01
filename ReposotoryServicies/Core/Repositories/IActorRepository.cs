@@ -17,6 +17,6 @@ namespace ReposotoryServicies.Core.Repositories
 
         IEnumerable<Actor> GetYoungestActors();
 
-        IQueryable<IGrouping<Country, Actor>> GetActorsByCountry();
+        IEnumerable<IGrouping<Country, Actor>> GetActorsByCountry();
     }
 }

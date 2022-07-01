@@ -37,14 +37,16 @@ namespace ReposotoryServicies.Persistance.Repositories
             return movies;
         }
 
-        public IQueryable<IGrouping<Country, Actor>> GetActorsByCountry()
+        public IEnumerable<IGrouping<Country, Actor>> GetActorsByCountry()
         {
             var group = from actor in table
-                        where actor.Country == country
                         group actor by actor.Country into lista
                         select lista;
 
             return group;
         }
+
+
+    
     }
 }

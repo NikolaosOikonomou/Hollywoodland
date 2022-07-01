@@ -23,17 +23,36 @@ namespace WebAppHollywood.Areas.Customer.Controllers
         }
 
 
-        public ActionResult Index()
+        public ActionResult Index(string searchCountry)
         {
-
-
+            ViewBag.currentCountry = searchCountry;
+           
             ActorIndexViewModel vm = new ActorIndexViewModel()
             {
+
                 Actors = unit.Actors.GetActorsOrderByAscending(),
-                ActorsByDecade = unit.Actors.GetActorsByCountry()
+                Countries = unit.Actors.GetActorsByCountry(),
+                 
             };
+            if (searchCountry == null) { return View(vm); }
+            if (!(searchCountry == "All"))
+            {
+
+                ActorsFilterByCountry(vm, searchCountry);
+            }
+           
+           
+
             return View(vm);
 
+        }
+
+        public void ActorsFilterByCountry(ActorIndexViewModel vm, string country)
+        {
+            var actors = from actor in vm.Actors
+                         where actor.Country.ToString() == country
+                         select actor;
+            vm.Actors = actors;
         }
 
         public ActionResult Details(int? id)

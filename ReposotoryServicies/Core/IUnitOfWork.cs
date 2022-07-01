@@ -1,13 +1,12 @@
 ﻿using Entities.Models;
-using ReposotoryServicies.Core.Repositories;
-using ReposotoryServicies.Persistance;
+using RepositoryServicies.Core.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ReposotoryServicies.Core
+namespace RepositoryServicies.Core
 {
     public interface IUnitOfWork : IDisposable
     {

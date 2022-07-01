@@ -1,15 +1,15 @@
 ﻿using Entities.Models;
 using MyDatabase;
-using ReposotoryServicies.Core;
-using ReposotoryServicies.Core.Repositories;
-using ReposotoryServicies.Persistance.Repositories;
+using RepositoryServicies.Core;
+using RepositoryServicies.Core.Repositories;
+using RepositoryServicies.Persistance.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ReposotoryServicies.Persistance
+namespace RepositoryServicies.Persistance
 {
     public class UnitOfWork : IUnitOfWork
     {

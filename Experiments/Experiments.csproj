@@ -69,9 +69,9 @@
       <Project>{8B7F2987-5897-4A6D-968A-CE5D714C684D}</Project>
       <Name>MyDatabase</Name>
     </ProjectReference>
-    <ProjectReference Include="..\ReposotoryServicies\ReposotoryServicies.csproj">
+    <ProjectReference Include="..\ReposotoryServicies\RepositoryServicies.csproj">
       <Project>{8c2842f8-37ec-4b46-85fe-17b4e2280c4e}</Project>
-      <Name>ReposotoryServicies</Name>
+      <Name>RepositoryServicies</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

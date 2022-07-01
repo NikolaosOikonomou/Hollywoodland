@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Entities.Models;
 
-namespace ReposotoryServicies.Core
+namespace RepositoryServicies.Core
 {
     public interface IGenericRepository<T> where T : HollywoodEntity
     {

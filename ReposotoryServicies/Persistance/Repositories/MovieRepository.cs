@@ -1,13 +1,13 @@
 ﻿using Entities.Models;
 using MyDatabase;
-using ReposotoryServicies.Core.Repositories;
+using RepositoryServicies.Core.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ReposotoryServicies.Persistance
+namespace RepositoryServicies.Persistance
 {
     public class MovieRepository : GenericRepository<Movie>, IMovieRepository
     {

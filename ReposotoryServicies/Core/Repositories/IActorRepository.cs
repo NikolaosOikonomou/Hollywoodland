@@ -5,7 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ReposotoryServicies.Core.Repositories
+
+
+namespace RepositoryServicies.Core.Repositories
 {
     public interface IActorRepository : IGenericRepository<Actor>
     {
@@ -17,6 +19,11 @@ namespace ReposotoryServicies.Core.Repositories
 
         IEnumerable<Actor> GetYoungestActors();
 
-        IEnumerable<IGrouping<Country, Actor>> GetActorsByCountry();
+        IEnumerable<IGrouping<Country, Country>> GetActorsByCountry();
+
+        List<string> GetActorByGenre();
+
+
+
     }
 }

@@ -1,5 +1,5 @@
 ﻿using Entities.Models;
-using ReposotoryServicies.Persistance;
+using RepositoryServicies.Persistance;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using WebAppHollywood.Areas.Customer.ViewModels;
 using WebAppHollywood.Areas.Customer.ViewModels.ActorViews;
+using WebAppHollywood.FilterServices;
 
 namespace WebAppHollywood.Areas.Customer.Controllers
 {
@@ -22,38 +23,31 @@ namespace WebAppHollywood.Areas.Customer.Controllers
             unit = new UnitOfWork(db);
         }
 
+        private ActorFilter filter = new ActorFilter();
+
 
         public ActionResult Index(string searchCountry)
         {
             ViewBag.currentCountry = searchCountry;
-           
+
             ActorIndexViewModel vm = new ActorIndexViewModel()
             {
-
                 Actors = unit.Actors.GetActorsOrderByAscending(),
                 Countries = unit.Actors.GetActorsByCountry(),
-                 
+                GenrePlayed = unit.Actors.GetActorByGenre()
             };
+
             if (searchCountry == null) { return View(vm); }
             if (!(searchCountry == "All"))
             {
-
-                ActorsFilterByCountry(vm, searchCountry);
+               filter.ActorsByCountry(vm, searchCountry);
             }
            
            
-
             return View(vm);
 
         }
 
-        public void ActorsFilterByCountry(ActorIndexViewModel vm, string country)
-        {
-            var actors = from actor in vm.Actors
-                         where actor.Country.ToString() == country
-                         select actor;
-            vm.Actors = actors;
-        }
 
         public ActionResult Details(int? id)
         {

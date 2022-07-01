@@ -5,7 +5,7 @@ VisualStudioVersion = 17.2.32526.322
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Entities", "Entities\Entities.csproj", "{908D6278-3AC3-4FC6-8A89-F61460F26B88}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReposotoryServicies", "ReposotoryServicies\ReposotoryServicies.csproj", "{8C2842F8-37EC-4B46-85FE-17B4E2280C4E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RepositoryServicies", "ReposotoryServicies\RepositoryServicies.csproj", "{8C2842F8-37EC-4B46-85FE-17B4E2280C4E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Experiments", "Experiments\Experiments.csproj", "{3D16F828-EDAD-40A6-A375-DB8B27D7A09A}"
 EndProject

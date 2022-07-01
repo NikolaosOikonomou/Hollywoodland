@@ -1,6 +1,6 @@
 ﻿using Entities.Models;
-using ReposotoryServicies.Core;
-using ReposotoryServicies.Persistance;
+using RepositoryServicies.Core;
+using RepositoryServicies.Persistance;
 using System;
 using System.Collections.Generic;
 using System.Linq;

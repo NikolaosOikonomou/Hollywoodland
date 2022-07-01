@@ -1,6 +1,6 @@
 ﻿using Entities.Models;
 using MyDatabase;
-using ReposotoryServicies.Core;
+using RepositoryServicies.Core;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ReposotoryServicies.Persistance
+namespace RepositoryServicies.Persistance
 {
     /// <summary>
     /// Implementing a Generic Repository.

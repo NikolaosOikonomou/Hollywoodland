@@ -1,13 +1,13 @@
 ﻿using Entities.Models;
 using MyDatabase;
-using ReposotoryServicies.Core.Repositories;
+using RepositoryServicies.Core.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ReposotoryServicies.Persistance.Repositories
+namespace RepositoryServicies.Persistance.Repositories
 {
     internal class ActorRepository : GenericRepository<Actor>, IActorRepository
     {
@@ -37,16 +37,24 @@ namespace ReposotoryServicies.Persistance.Repositories
             return movies;
         }
 
-        public IEnumerable<IGrouping<Country, Actor>> GetActorsByCountry()
+        public IEnumerable<IGrouping<Country, Country>> GetActorsByCountry()
         {
             var group = from actor in table
-                        group actor by actor.Country into lista
-                        select lista;
+                        group actor.Country by actor.Country into list
+                        orderby list.Count() descending
+                        select list;
 
             return group;
         }
 
+        
+        public List<string> GetActorByGenre()
+        {
+            var group = table
+                .SelectMany(x => x.Movies.Select(y => y.Genre != null ? y.Genre.Kind : "No Genre"))
+                .Distinct().ToList();
 
-    
+            return group;
+        }
     }
 }

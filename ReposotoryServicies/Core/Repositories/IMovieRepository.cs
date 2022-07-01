@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ReposotoryServicies.Core.Repositories
+namespace RepositoryServicies.Core.Repositories
 {
     public interface IMovieRepository : IGenericRepository<Movie>
     {

@@ -10,7 +10,6 @@
         border-radius: 13px;
         background-color: #2b66c4;
     }
-
 </style>
 
 
@@ -35,30 +34,26 @@
                 <div class="catalog__nav">
                     <form>
                         <div class="catalog__select-wrap">
-                            <select class="catalog__select" name="genres">
-                                <option value="All genres">All genres</option>
-                              @foreach (var genre in Model.GenrePlayed)
-                              {
-                                  <option>@genre</option>
-                              }
+                            <select class="catalog__select" name="genresSearch">
+                                <option value="">All genres</option>
+                                @foreach (var genre in Model.GenrePlayed)
+                                {
+                                    <option>@genre</option>
+                                }
                             </select>
 
-                            <select class="catalog__select" name="years">
-                                <option value="All the years">All the years</option>
-                                <option value="1">'50s</option>
-                                <option value="2">'60s</option>
-                                <option value="3">'70s</option>
-                                <option value="4">'80s</option>
-                                <option value="5">'90s</option>
-                                <option value="6">2000-10</option>
-                                <option value="7">2010-20</option>
-                                <option value="8">2021</option>
+                            <select class="catalog__select" name="decadesSearch">
+                                <option value="">All Decades</option>
+                                @foreach (var decade in Model.Decades)
+                                {
+                                    <option value="@decade.Key">@decade.Key (@decade.Count())</option>
+                                }
                             </select>
 
 
-                            <select class="catalog__select" name="searchCountry">
+                            <select class="catalog__select" name="countriesSearch">
 
-                                <option value="All">All Countries</option>
+                                <option value="">All Countries</option>
 
 
                                 @foreach (var country in Model.Countries)
@@ -114,6 +109,10 @@
                                     {
                                         <li>@(DateTime.Now.Year - actor.DateOfBirth.Year) Years old</li>
 
+                                    }
+                                    else
+                                    {
+                                        <li>Not with us anymore :(</li>
                                     }
 
 

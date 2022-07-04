@@ -13,7 +13,9 @@ namespace WebAppHollywood.Areas.Customer.ViewModels
 
         public IEnumerable<Actor> Actors { get; set; }
 
-        public IEnumerable<string> GenrePlayed { get; set; } 
+        public IEnumerable<string> GenrePlayed { get; set; }
+
+        public IEnumerable<IGrouping<int, Actor>> Decades { get; set; }
 
 
     }

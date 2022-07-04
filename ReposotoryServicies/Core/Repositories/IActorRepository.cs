@@ -23,6 +23,8 @@ namespace RepositoryServicies.Core.Repositories
 
         List<string> GetActorByGenre();
 
+        IOrderedQueryable<IGrouping<int, Actor>> GetActorsByDecade();
+
 
 
     }

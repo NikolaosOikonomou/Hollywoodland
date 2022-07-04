@@ -21,5 +21,6 @@ namespace WebAppHollywood.FilterServices
             vm.Actors = actors;
         }
 
+        public string searchCountry { get; set; }
     }
 }

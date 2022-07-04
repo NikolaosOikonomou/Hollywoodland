@@ -23,27 +23,38 @@ namespace WebAppHollywood.Areas.Customer.Controllers
             unit = new UnitOfWork(db);
         }
 
-        private ActorFilter filter = new ActorFilter();
 
-
-        public ActionResult Index(string searchCountry)
+        public ActionResult Index(string genresSearch, string countriesSearch, int? decadesSearch)
         {
-            ViewBag.currentCountry = searchCountry;
+            var actors = unit.Actors.GetAll().OrderBy(x => x.FirstName);
+            IEnumerable<Actor> filteredActors = actors.ToList();
+
+            //Filtering
+            if (!string.IsNullOrEmpty(genresSearch))
+            {
+                filteredActors = filteredActors.Where(x => x.Movies.Select(y => y?.Genre?.Kind).Contains(genresSearch));
+            }
+
+            if (!string.IsNullOrEmpty(countriesSearch))
+            {
+                filteredActors = filteredActors.Where(x => x.Country.ToString().Contains(countriesSearch));
+             
+            }
+
+            if (!(decadesSearch == null))
+            {
+                filteredActors = filteredActors.Where(x => x.DateOfBirth.Year >= decadesSearch && x.DateOfBirth.Year < decadesSearch + 10);
+            }
+
 
             ActorIndexViewModel vm = new ActorIndexViewModel()
             {
-                Actors = unit.Actors.GetActorsOrderByAscending(),
+                Actors = filteredActors,
                 Countries = unit.Actors.GetActorsByCountry(),
-                GenrePlayed = unit.Actors.GetActorByGenre()
+                GenrePlayed = unit.Actors.GetActorByGenre(),
+                Decades = unit.Actors.GetActorsByDecade()
             };
 
-            if (searchCountry == null) { return View(vm); }
-            if (!(searchCountry == "All"))
-            {
-               filter.ActorsByCountry(vm, searchCountry);
-            }
-           
-           
             return View(vm);
 
         }

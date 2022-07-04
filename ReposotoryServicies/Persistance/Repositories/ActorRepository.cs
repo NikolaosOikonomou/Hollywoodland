@@ -37,6 +37,10 @@ namespace RepositoryServicies.Persistance.Repositories
             return movies;
         }
 
+        /// <summary>
+        /// Grouping Actors by their country
+        /// </summary>
+        /// <returns></returns>
         public IEnumerable<IGrouping<Country, Country>> GetActorsByCountry()
         {
             var group = from actor in table
@@ -47,13 +51,29 @@ namespace RepositoryServicies.Persistance.Repositories
             return group;
         }
 
-        
+        /// <summary>
+        /// Grouping Actors by their Genre
+        /// </summary>
+        /// <returns></returns>
         public List<string> GetActorByGenre()
         {
             var group = table
                 .SelectMany(x => x.Movies.Select(y => y.Genre != null ? y.Genre.Kind : "No Genre"))
                 .Distinct().ToList();
 
+            return group;
+        }
+
+        /// <summary>
+        /// Grouping Actors by Decade they were born
+        /// </summary>
+        /// <returns></returns>
+        public IOrderedQueryable<IGrouping<int, Actor>> GetActorsByDecade()
+        {
+            var group = from actor in table
+                        group actor by (actor.DateOfBirth.Year /10 * 10) into decadesList
+                        orderby decadesList.Key descending
+                        select decadesList;
             return group;
         }
     }

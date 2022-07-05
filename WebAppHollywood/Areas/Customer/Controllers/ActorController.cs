@@ -1,4 +1,5 @@
 ﻿using Entities.Models;
+using Entities.SearchQueries;
 using RepositoryServicies.Persistance;
 using System;
 using System.Collections.Generic;
@@ -8,7 +9,7 @@ using System.Web;
 using System.Web.Mvc;
 using WebAppHollywood.Areas.Customer.ViewModels;
 using WebAppHollywood.Areas.Customer.ViewModels.ActorViews;
-using WebAppHollywood.FilterServices;
+
 
 namespace WebAppHollywood.Areas.Customer.Controllers
 {
@@ -24,28 +25,18 @@ namespace WebAppHollywood.Areas.Customer.Controllers
         }
 
 
-        public ActionResult Index(string genresSearch, string countriesSearch, int? decadesSearch)
+        public ActionResult Index(ActorFilterSettings filterSettings, string sortOptions)
         {
-            var actors = unit.Actors.GetAll().OrderBy(x => x.FirstName);
-            IEnumerable<Actor> filteredActors = actors.ToList();
+            var filteredActors = unit.Actors.Filtering(filterSettings);
 
-            //Filtering
-            if (!string.IsNullOrEmpty(genresSearch))
+            switch (sortOptions)
             {
-                filteredActors = filteredActors.Where(x => x.Movies.Select(y => y?.Genre?.Kind).Contains(genresSearch));
+                case "featured": filteredActors = unit.Actors.GetActorsOrderByAscending(); break;
+                case "youngestAsc": filteredActors = unit.Actors.GetYoungestActors(); break;
+                case "notAlive": filteredActors = unit.Actors.GetActorsPastAway(); break;
+                case "richestAsc": filteredActors = unit.Actors.GetRichestActors(); break;
+                default: /*filteredActors = unit.Actors.GetActorsOrderByAscending();*/ break;
             }
-
-            if (!string.IsNullOrEmpty(countriesSearch))
-            {
-                filteredActors = filteredActors.Where(x => x.Country.ToString().Contains(countriesSearch));
-             
-            }
-
-            if (!(decadesSearch == null))
-            {
-                filteredActors = filteredActors.Where(x => x.DateOfBirth.Year >= decadesSearch && x.DateOfBirth.Year < decadesSearch + 10);
-            }
-
 
             ActorIndexViewModel vm = new ActorIndexViewModel()
             {
@@ -54,6 +45,8 @@ namespace WebAppHollywood.Areas.Customer.Controllers
                 GenrePlayed = unit.Actors.GetActorByGenre(),
                 Decades = unit.Actors.GetActorsByDecade()
             };
+
+           
 
             return View(vm);
 

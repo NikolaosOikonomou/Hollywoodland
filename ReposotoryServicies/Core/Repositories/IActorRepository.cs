@@ -1,4 +1,5 @@
 ﻿using Entities.Models;
+using Entities.SearchQueries;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,7 +16,7 @@ namespace RepositoryServicies.Core.Repositories
 
         IEnumerable<Movie> GetActorMovies(int? id);
 
-        IEnumerable<Actor> GetOldestActors();
+        IEnumerable<Actor> GetActorsPastAway();
 
         IEnumerable<Actor> GetYoungestActors();
 
@@ -24,6 +25,10 @@ namespace RepositoryServicies.Core.Repositories
         List<string> GetActorByGenre();
 
         IOrderedQueryable<IGrouping<int, Actor>> GetActorsByDecade();
+
+        IEnumerable<Actor> Filtering(ActorFilterSettings filterSettings);
+
+        IEnumerable<Actor> GetRichestActors();
 
 
 

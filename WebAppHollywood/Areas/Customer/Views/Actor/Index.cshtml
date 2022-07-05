@@ -32,7 +32,7 @@
         <div class="row">
             <div class="col-12">
                 <div class="catalog__nav">
-                    <form>
+                    <form class="catalog__select-wrap">
                         <div class="catalog__select-wrap">
                             <select class="catalog__select" name="genresSearch">
                                 <option value="">All genres</option>
@@ -69,18 +69,17 @@
 
                                 }
 
-
-
                             </select>
                             <input id="searchButton" type="submit" value="Search" class="btn btn-primary" />
                         </div>
 
+                        <div class="slider-radio">
+                            <input onchange="this.form.submit()" type="radio" name="sortOptions" value="featured" id="featured"><label for="featured">Featured</label>
+                            <input onchange="this.form.submit()" type="radio" name="sortOptions" value="richestAsc" id="richest"><label for="richest">Richest</label>
+                            <input onchange="this.form.submit()" type="radio" name="sortOptions" value="youngestAsc" id="newest"><label for="newest">Youngest</label>
+                            <input onchange="this.form.submit()" type="radio" name="sortOptions" value="notAlive" id="pastAway"><label for="pastAway">PastAway</label>
+                        </div>
                     </form>
-                    <div class="slider-radio">
-                        <input type="radio" name="grade" id="featured" checked="checked"><label for="featured">Featured</label>
-                        <input type="radio" name="grade" id="popular"><label for="popular">Popular</label>
-                        <input type="radio" name="grade" id="newest"><label for="newest">Youngest</label>
-                    </div>
                 </div>
 
                 <div class="row row--grid">
@@ -96,15 +95,14 @@
                                 <ul class="card__list">
                                     @foreach (var genre in actor.Movies.Select(x => x.Genre?.Kind).ToList().Distinct())
                                     {
-                                        <li>
-                                            @genre
-                                        </li>
-
+                                        <li> @genre </li>
                                     }
+                                </ul>
+                                <ul class="card__list">
+                                    <li>@actor.Salary.ToString("C0")</li>
                                 </ul>
 
                                 <ul class="card__list">
-
                                     @if (actor.DateOfDeath == null)
                                     {
                                         <li>@(DateTime.Now.Year - actor.DateOfBirth.Year) Years old</li>
@@ -114,7 +112,6 @@
                                     {
                                         <li>Not with us anymore :(</li>
                                     }
-
 
                                 </ul>
                             </div>

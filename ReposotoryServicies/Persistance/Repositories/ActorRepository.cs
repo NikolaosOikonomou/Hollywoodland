@@ -1,4 +1,5 @@
 ﻿using Entities.Models;
+using Entities.SearchQueries;
 using MyDatabase;
 using RepositoryServicies.Core.Repositories;
 using System;
@@ -11,9 +12,10 @@ namespace RepositoryServicies.Persistance.Repositories
 {
     internal class ActorRepository : GenericRepository<Actor>, IActorRepository
     {
+        
         public ActorRepository(ApplicationDbContext context) : base(context)
         {
-
+           
         }
 
         public IEnumerable<Actor> GetActorsOrderByAscending()
@@ -21,19 +23,33 @@ namespace RepositoryServicies.Persistance.Repositories
             return table.OrderBy(x => x.LastName).ToList();
         }
 
+        /// <summary>
+        /// Drawing all actors based on their date of birth.
+        /// Displaying  Youngest actors first
+        /// </summary>
+        /// <returns></returns>
         public IEnumerable<Actor> GetYoungestActors()
         {
             return table.OrderByDescending(x => x.DateOfBirth.Year).ToList();
         }
 
-        public IEnumerable<Actor> GetOldestActors()
+        /// <summary>
+        /// Drawing all actors who are not alive
+        /// </summary>
+        /// <returns></returns>
+        public IEnumerable<Actor> GetActorsPastAway()
         {
-            return table.OrderBy(x => x.DateOfBirth.Year).ToList();
+            return table.Where(x => x.DateOfDeath.HasValue).OrderBy(x => x.FirstName).ToList();
         }
 
+        /// <summary>
+        /// Drawing actor's movies
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public IEnumerable<Movie> GetActorMovies(int? id)
         {
-            var movies = table.Find(id).Movies.ToList().Take(5);
+            var movies = table.Find(id).Movies.ToList();
             return movies;
         }
 
@@ -75,6 +91,41 @@ namespace RepositoryServicies.Persistance.Repositories
                         orderby decadesList.Key descending
                         select decadesList;
             return group;
+        }
+
+        public IEnumerable<Actor> GetRichestActors()
+        {
+           
+            return table.OrderByDescending(x => x.Salary).ToList();
+        }
+
+        /// <summary>
+        /// Filtering Actors based on their Genre,Country,Decade who were born
+        /// </summary>
+        /// <param name="filterSettings"></param>
+        /// <returns></returns>
+        public IEnumerable<Actor> Filtering(ActorFilterSettings filterSettings)
+        {
+            var actors = GetActorsOrderByAscending();
+            IEnumerable<Actor> filteredActors = actors.ToList();
+
+            //Filtering
+            if (!string.IsNullOrEmpty(filterSettings.genresSearch))
+            {
+                filteredActors = filteredActors.Where(x => x.Movies.Select(y => y?.Genre?.Kind).Contains(filterSettings.genresSearch));
+            }
+
+            if (!string.IsNullOrEmpty(filterSettings.countriesSearch))
+            {
+                filteredActors = filteredActors.Where(x => x.Country.ToString().Contains(filterSettings.countriesSearch));
+            }
+
+            if (!(filterSettings.decadesSearch == null))
+            {
+                filteredActors = filteredActors.Where(x => x.DateOfBirth.Year >= filterSettings.decadesSearch && x.DateOfBirth.Year < filterSettings.decadesSearch + 10);
+            }
+
+            return filteredActors;
         }
     }
 }

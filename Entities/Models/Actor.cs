@@ -41,12 +41,6 @@ namespace Entities.Models
             get { return DateTime.Now.Year - this.DateOfBirth.Year; }
         }
 
-        public void Xoreuo()
-        {
-            Console.WriteLine("tora xoreuo");
-        }
-
-
         //Navigation Properties
         public virtual ICollection<Photo> Photos { get; set; }
         public virtual ICollection<Movie> Movies { get; set; }

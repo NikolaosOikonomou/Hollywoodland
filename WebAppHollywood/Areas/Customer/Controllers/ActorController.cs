@@ -35,7 +35,7 @@ namespace WebAppHollywood.Areas.Customer.Controllers
                 case "youngestAsc": filteredActors = unit.Actors.GetYoungestActors(); break;
                 case "notAlive": filteredActors = unit.Actors.GetActorsPastAway(); break;
                 case "richestAsc": filteredActors = unit.Actors.GetRichestActors(); break;
-                default: /*filteredActors = unit.Actors.GetActorsOrderByAscending();*/ break;
+                default:/* filteredActors = unit.Actors.GetActorsOrderByAscending();*/ break;
             }
 
             ActorIndexViewModel vm = new ActorIndexViewModel()

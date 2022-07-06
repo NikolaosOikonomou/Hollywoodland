@@ -5,12 +5,43 @@
     Layout = "~/Areas/Customer/Views/Shared/_CustomerLayout.cshtml";
 }
 
-<style>
-    #searchButton {
-        border-radius: 13px;
-        background-color: #2b66c4;
-    }
-</style>
+@section MyStyles{
+    <style>
+        #searchButton {
+            border-radius: 20px;
+            height: 45px;
+            width: 80px;
+            background-color: #286bd2;
+            color: aliceblue;
+        }
+
+            #searchButton:hover {
+                background-color: #003d9d;
+                transition: 0.5s;
+                color: #4cdbf9;
+            }
+
+        .cartBtn {
+            padding: 6px 12px;
+            border-radius: 10px;
+            background-color: #286bd2;
+            color: aliceblue;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+            .cartBtn:hover {
+                background-color: #034abc;
+                transition: 0.5s;
+                color: #4cdbf9;
+            }
+
+        /* .cartBtn:active{
+                background-color:#ff9dc7;
+            }*/
+    </style>
+}
+
 
 
 <div class="container">
@@ -50,12 +81,8 @@
                                 }
                             </select>
 
-
                             <select class="catalog__select" name="countriesSearch">
-
                                 <option value="">All Countries</option>
-
-
                                 @foreach (var country in Model.Countries)
                                 {
                                     if (country.Key == Entities.Models.Country.United_States_of_America)
@@ -87,32 +114,40 @@
                     @foreach (var actor in Model.Actors)
                     {
                         <div class="col-2 col-sm-2 col-lg-2 col-xl-2">
-                            <div class="card">
+                            <div class="card" id="@actor.ActorId">
                                 <a href="~/Customer/Actor/Details/@actor.ActorId" class="card__cover">
-                                    <img src="@actor.PhotoUrl" alt="">
+                                    <img id="@("photo"+actor.ActorId)" src="@actor.PhotoUrl" alt="Actor's Photo">
                                 </a>
-                                <h3 class="card__title"><a href="details.html">@(actor.FirstName + " " + actor.LastName)</a></h3>
-                                <ul class="card__list">
+                                <h3 id="@("fullname"+actor.ActorId)" class="card__title"><a href="details.html">@(actor.FirstName + " " + actor.LastName)</a></h3>
+                                <ul id="@("genre"+actor.ActorId)" class="card__list">
                                     @foreach (var genre in actor.Movies.Select(x => x.Genre?.Kind).ToList().Distinct())
                                     {
                                         <li> @genre </li>
                                     }
                                 </ul>
                                 <ul class="card__list">
-                                    <li>@actor.Salary.ToString("C0")</li>
+                                    <li id="@("salary"+actor.ActorId)">@actor.Salary.ToString("C0")</li>
                                 </ul>
+                                <ul class="card__list">
+                                    <li id="@("country"+actor.ActorId)">@actor.Country.ToString().Replace("_", " ")</li>
+                                </ul>
+
+                                <ul class="card__list">
+                                    <li id="@("borned"+actor.ActorId)">Borned in @actor.DateOfBirth.ToString("yyyy")</li>
+                                </ul>
+                                @if (actor.DateOfDeath.HasValue)
+                                {
+                                    <ul class="card__list">
+                                        <li> Pased away at the age of @(actor.DateOfDeath.Value.Year - actor.DateOfBirth.Year)</li>
+                                    </ul>
+                                }
+
 
                                 <ul class="card__list">
                                     @if (actor.DateOfDeath == null)
                                     {
-                                        <li>@(DateTime.Now.Year - actor.DateOfBirth.Year) Years old</li>
-
+                                        <li><button class="cartBtn">ADD</button></li>
                                     }
-                                    else
-                                    {
-                                        <li>Not with us anymore :(</li>
-                                    }
-
                                 </ul>
                             </div>
                         </div>
@@ -120,10 +155,90 @@
                 </div>
             </div>
         </div>
-
-
     </div>
 </div>
+
+
+@* JavaScript Section for the locaStorage activities(Adding/Removing actor)
+    in order to generate data for the Cart View *@
+@section MyScripts{
+    <script>
+        $(document).ready(function () {
+            //getting the data from localStorage whenever the page loads
+            //Using  this to inform the Buttons text/css
+            let actors = JSON.parse(localStorage.getItem("actorKey"));
+
+            for (let a of actors) {
+                let id = "#" + a.id;
+                $(id).find(".cartBtn").text("REMOVE");
+                $(id).find(".cartBtn").css("background-color", "#8f4238");
+            }
+
+            $(".cartBtn").on("click", function () {
+
+                //Getting Actor's properties from DOM
+                let id = $(this).parent().parent().parent().attr("id");
+                let photo = $("#photo" + id).attr("src");
+                let fullname = $("#fullname" + id).text();
+                let borned = $("#borned" + id).text();
+                let country = $("#country" + id).text();
+                let genre = Array.from($("#genre" + id).children()).map(x => x.innerText);
+                let salary = $("#salary" + id).text();
+                //Passing the values we draw
+                let actor = {
+                    id,
+                    photo,
+                    fullname,
+                    borned,
+                    country,
+                    genre,
+                    salary
+                }
+                console.log(actor);
+                //Button settings(ADD active)
+                if ($(this).text() == "ADD") {
+                    $(this).text("REMOVE")
+                    $(this).css("background-color", "#8f4238")
+
+                    let data = localStorage.getItem("actorKey");
+                    
+                    //Checking if the localStorage has data.If not create and add the actor to the actors Array
+                    //and set the data to localStorage in Json form.
+                    if (!data) {
+                        let actors = [];
+                        actors.push(actor);
+                        localStorage.setItem("actorKey", JSON.stringify(actors));
+                        $("#cartNumber").text(actors.length);
+                    }
+                    else { //else check if the actor exist,if not add him and set the data tp localStorage
+                        let actors = JSON.parse(localStorage.getItem("actorKey"));
+                        if (!(actors.some(x => x.id == actor.id))){
+                            actors.push(actor);
+                            localStorage.setItem("actorKey", JSON.stringify(actors));
+                            $("#cartNumber").text(actors.length);
+                        }
+                        
+                    }
+                }
+                else {
+                    //Button settings(REMOVE active)
+                    $(this).text("ADD")
+                    $(this).css("background-color", "#286bd2")
+                    //Filtering the actors array to remove the chosen actor
+                    let data = localStorage.getItem("actorKey");
+                    if (data) {
+                        let actors = JSON.parse(localStorage.getItem("actorKey"));
+                        let reducedActors = actors.filter(x => x.id != actor.id);
+                        localStorage.setItem("actorKey", JSON.stringify(reducedActors));
+                        $("#cartNumber").text(reducedActors.length);
+                    }
+                }
+            })
+        });
+
+    </script>
+
+}
 
 
 

@@ -3,7 +3,7 @@
 <head>
     <!--Css Libray and Favicon-->
     @Html.Partial("~/Areas/Customer/Views/Shared/Components/_MetaHeader.cshtml")
-
+    @RenderSection("MyStyles",false)
 </head>
 
 <body>
@@ -20,5 +20,21 @@
     @Html.Partial("~/Areas/Customer/Views/Shared/Components/_JSLibrary.cshtml")
 
  
+    @RenderSection("MyScripts",false)
+
+    @* script to display the number of actors next to the cart button *@
+    <script>
+
+        let actors = JSON.parse(localStorage.getItem("actorKey"));
+        if (actors) {
+            let count = actors.length;
+            $("#cartNumber").text(count);
+        }
+        else {
+            $("#cartNumber").text(0);
+        }
+
+    </script>
+
 </body>
 </html>

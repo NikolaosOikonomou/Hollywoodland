@@ -14,7 +14,5 @@ namespace Entities.SearchQueries
 
         public string countriesSearch { get; set; }
 
-       
-
     }
 }

@@ -3,26 +3,34 @@
 }
 
 <style>
-    .jumbotron{
-        background-color:#a5a5a5
+    .jumbotron {
+        background-image: url('../../content/img/hollywood1.jpg');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        height:400px;
     }
-    body{
-        background-color:#ebf5fb
+    .lead{
+        margin-top:150px;
     }
+
+    
 </style>
 
 <div class="jumbotron">
-    <h1 style="text-align:center ">Hollywoodland</h1>
+    
+   
+    <h1 class="myImg" style="text-align:center "></h1>
     <p class="lead">By Oikonomou Nikos</p>
-    <p><a href="https://github.com/sokogou" target="_blank"  class="btn btn-primary btn-lg">Github &raquo;</a></p>
+    <p><a href="https://github.com/sokogou" target="_blank" class="btn btn-primary btn-lg">Github &raquo;</a></p>
 </div>
 
 <div class="row">
     <div class="col-md-4">
         <h2>Entities Project</h2>
         <p>
-            Here you can find all the Models
-            Including a custom validation folder
+            All the Models including a custom validation folder.Also a SearchQueries folder
+            with filter settings for the Actor entity.
         </p>
 
     </div>
@@ -50,6 +58,15 @@
             The main application.In Areas/Customer folder with the specific ViewModel clases,
             and the controller's Action methods produces the choosen Views for the Movie and
             Actors Entities
+        </p>
+
+    </div>
+    <div class="col-md-4">
+        <h2>Filter & Sorting</h2>
+        <p>
+            Filtering Actors based on the genre of the movies they' ve played,of the decade they
+            were born, nationallity and those who have pased away.Furthermore sorting Actors based
+            on their salary and their age (youngest first).
         </p>
 
     </div>
